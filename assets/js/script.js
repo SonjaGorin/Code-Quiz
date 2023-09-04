@@ -4,36 +4,42 @@ var answer1 = document.querySelector("#answer1")
 var answer2 = document.querySelector("#answer2")
 var answer3 = document.querySelector("#answer3")
 var answer4 = document.querySelector("#answer4")
+var correctAnswer = document.querySelector("#correctAnswer")
+var messageEl = document.querySelector("#message")
 
 
 var questionsWithAnswers = [
     {
-        question: "Question1",
-        answer1: "Answer1!",
-        answer2: "Answer2",
-        answer3: "Answer3",
-        answer4: "Answer4",
+        question: "1. Question1",
+        answer1: "1. Answer1!",
+        answer2: "2. Answer2",
+        answer3: "3. Answer3",
+        answer4: "4. Answer4",
+        correctAnswer: "1. Answer1!",
     },
     {
-        question: "Question2",
-        answer1: "Answer12",
-        answer2: "Answer22",
-        answer3: "Answer32!",
-        answer4: "Answer42",
+        question: "2. Question2",
+        answer1: "1. Answer12",
+        answer2: "2. Answer22",
+        answer3: "3. Answer32!",
+        answer4: "4. Answer42",
+        correctAnswer: "3. Answer32!",
     },
     {
-        question: "Question3",
-        answer1: "Answer13",
-        answer2: "Answer23!",
-        answer3: "Answer33",
-        answer4: "Answer43",
+        question: "3. Question3",
+        answer1: "1. Answer13",
+        answer2: "2. Answer23!",
+        answer3: "3. Answer33",
+        answer4: "4. Answer43",
+        correctAnswer: "2. Answer23!",
     },
     {
-        question: "Question4",
-        answer1: "Answer14",
-        answer2: "Answer24",
-        answer3: "Answer34",
-        answer4: "Answer44!",
+        question: "4. Question4",
+        answer1: "1. Answer14",
+        answer2: "2. Answer24",
+        answer3: "3. Answer34",
+        answer4: "4. Answer44!",
+        correctAnswer: "4. Answer44!",
     }
 ]
 
@@ -45,6 +51,8 @@ function render() {
     answer2.textContent = questionsWithAnswers[i].answer2;
     answer3.textContent = questionsWithAnswers[i].answer3;
     answer4.textContent = questionsWithAnswers[i].answer4;
+    correctAnswer.textContent = questionsWithAnswers[i].correctAnswer
+    messageEl.textContent = ""
 }
 
 render()
@@ -52,13 +60,16 @@ render()
 questionContainer.addEventListener("click", function(event) {
     event.preventDefault();
     var element = event.target;
-    if (element.matches("button")) {
-        i++;
-        render()
+    if (element.matches("button") && element.textContent === correctAnswer.textContent) {
+        messageEl.textContent = "Correct!";
+    } else {
+        messageEl.textContent = "Wrong! The correct answer is " + correctAnswer.textContent + "."
     }
+    i++;
+    setTimeout(() => {
+        render();
+    }, 1000);
 })
 
-questionContainer.addEventListener("click", function(event) {
-    event.preventDefault();
-    if ()
-})
+
+

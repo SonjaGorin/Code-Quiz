@@ -7,6 +7,10 @@ var answer3 = document.querySelector("#answer3")
 var answer4 = document.querySelector("#answer4")
 var correctAnswer = document.querySelector("#correctAnswer")
 var messageEl = document.querySelector("#message")
+var finalScoreEl = document.querySelector("#score")
+var highscoresListEl = document.querySelector("#highscores-list")
+var highscoresFormEl = document.querySelector("#highscores-form")
+var inputInitialsEl = document.querySelector("#input-initials")
 
 
 var questionsWithAnswers = [
@@ -51,18 +55,15 @@ function timer() {
     var timerInterval = setInterval(function() {
       secondsLeft--;
       secondsEl.textContent = secondsLeft;
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            questionContainer.innerHTML = ""
-        }
-        if (i === questionsWithAnswers.length) {
+      finalScoreEl.textContent = secondsLeft;
+        if(secondsLeft === 0 || i === questionsWithAnswers.length) {
             clearInterval(timerInterval);
             questionContainer.innerHTML = ""
         }
     }, 1000);
   }
 
-  timer()
+timer()
 
 function render() {
     question.textContent = questionsWithAnswers[i].question;
@@ -79,10 +80,10 @@ render()
 questionContainer.addEventListener("click", function(event) {
     event.preventDefault();
     var element = event.target;
-    if (element.matches("button") === false) return;
-    if (element.matches("button") && element.textContent === correctAnswer.textContent) {
+    if (element.matches(".answer-button") === false) return;
+    if (element.matches(".answer-button") && element.textContent === correctAnswer.textContent) {
         messageEl.textContent = "Correct!";
-    } else if (element.matches("button") && element.textContent !== correctAnswer.textContent){
+    } else if (element.matches(".answer-button") && element.textContent !== correctAnswer.textContent){
         messageEl.textContent = "Wrong! The correct answer is " + correctAnswer.textContent + ".";
         secondsLeft -= 10;
     } 
@@ -92,5 +93,40 @@ questionContainer.addEventListener("click", function(event) {
     }, 1000);
 })
 
+var highscoresList = []
 
+function renderHighscores() {
+    highscoresListEl.innerHTML = "";
 
+    for (var i = 0; i < highscoresList.length; i++) {
+      var highscore = highscoresList[i];
+
+      var li = document.createElement("li");
+      li.textContent = highscore;
+      li.setAttribute("data-index", i);
+
+      highscoresListEl.appendChild(li);
+    }
+}
+
+function storeHighscores() {
+    localStorage.setItem("highscoresList", JSON.stringify(highscoresList));
+}
+
+highscoresFormEl.addEventListener("click", function(event) {
+    event.preventDefault();
+    var element = event.target;
+    if (element.matches("#submit") === false) {
+        return;
+    } else {
+        var initialsText = inputInitialsEl.value.trim();
+        if (initialsText === "") {
+            return;
+        }
+        highscoresList.push(initialsText);
+        inputInitialsEl.value = "";
+
+        storeHighscores();
+        renderHighscores();
+    }    
+});

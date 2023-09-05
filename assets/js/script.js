@@ -1,3 +1,4 @@
+var secondsEl = document.querySelector("#seconds")
 var questionContainer = document.querySelector(".question-container")
 var question = document.querySelector("#question")
 var answer1 = document.querySelector("#answer1")
@@ -43,7 +44,25 @@ var questionsWithAnswers = [
     }
 ]
 
-i = 0
+var secondsLeft = 75;
+var i = 0;
+
+function timer() {
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      secondsEl.textContent = secondsLeft;
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            // highscore screen shows;
+        }
+        if (i === questionsWithAnswers.length) {
+            clearInterval(timerInterval);
+            // highscore screen shows;
+        }
+    }, 1000);
+  }
+
+  timer()
 
 function render() {
     question.textContent = questionsWithAnswers[i].question;
@@ -60,11 +79,13 @@ render()
 questionContainer.addEventListener("click", function(event) {
     event.preventDefault();
     var element = event.target;
+    if (element.matches("button") === false) return;
     if (element.matches("button") && element.textContent === correctAnswer.textContent) {
         messageEl.textContent = "Correct!";
-    } else {
-        messageEl.textContent = "Wrong! The correct answer is " + correctAnswer.textContent + "."
-    }
+    } else if (element.matches("button") && element.textContent !== correctAnswer.textContent){
+        messageEl.textContent = "Wrong! The correct answer is " + correctAnswer.textContent + ".";
+        secondsLeft -= 10;
+    } 
     i++;
     setTimeout(() => {
         render();

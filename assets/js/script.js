@@ -53,11 +53,11 @@ function timer() {
       secondsEl.textContent = secondsLeft;
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
-            // highscore screen shows;
+            questionContainer.innerHTML = ""
         }
         if (i === questionsWithAnswers.length) {
             clearInterval(timerInterval);
-            // highscore screen shows;
+            questionContainer.innerHTML = ""
         }
     }, 1000);
   }

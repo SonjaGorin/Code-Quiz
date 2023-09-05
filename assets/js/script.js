@@ -1,3 +1,5 @@
+var headerEl = document.querySelector(".header")
+var viewHighscores = document.querySelector("h1")
 var secondsEl = document.querySelector("#seconds")
 var questionContainer = document.querySelector(".question-container")
 var question = document.querySelector("#question")
@@ -11,6 +13,9 @@ var finalScoreEl = document.querySelector("#score")
 var highscoresListEl = document.querySelector("#highscores-list")
 var highscoresFormEl = document.querySelector("#highscores-form")
 var inputInitialsEl = document.querySelector("#input-initials")
+var formContainerEl = document.querySelector(".form-container")
+var highscoresContainerEl = document.querySelector(".highscores-container")
+var clearHighscoresBttn = document.querySelector("#clear-highscores")
 
 
 var questionsWithAnswers = [
@@ -59,6 +64,7 @@ function timer() {
         if(secondsLeft === 0 || i === questionsWithAnswers.length) {
             clearInterval(timerInterval);
             questionContainer.innerHTML = ""
+            formContainerEl.style.display = "block"
         }
     }, 1000);
   }
@@ -91,6 +97,7 @@ questionContainer.addEventListener("click", function(event) {
     setTimeout(() => {
         render();
     }, 1000);
+    
 })
 
 var highscoresList = []
@@ -102,12 +109,21 @@ function renderHighscores() {
       var highscore = highscoresList[i];
 
       var li = document.createElement("li");
-      li.textContent = highscore;
+      li.textContent = highscore.initials + " - " + highscore.score;
       li.setAttribute("data-index", i);
 
       highscoresListEl.appendChild(li);
     }
 }
+
+function init() {
+    var storedInitials = JSON.parse(localStorage.getItem("highscoresList"));
+    if (storedInitials !== null) {
+        highscoresList = storedInitials;
+    }
+
+    renderHighscores();
+  }
 
 function storeHighscores() {
     localStorage.setItem("highscoresList", JSON.stringify(highscoresList));
@@ -123,10 +139,27 @@ highscoresFormEl.addEventListener("click", function(event) {
         if (initialsText === "") {
             return;
         }
-        highscoresList.push(initialsText);
+        highscoresList.push({"initials": initialsText, "score": finalScoreEl.textContent});
         inputInitialsEl.value = "";
 
         storeHighscores();
         renderHighscores();
     }    
+    headerEl.style.display = "none"
+    formContainerEl.style.display = "none"
+    highscoresContainerEl.style.display = "block"
 });
+
+init()
+
+highscoresContainerEl.addEventListener("click", function(event) {
+    event.preventDefault();
+    var element = event.target;
+    if (element.matches("#clear-highscores") === false) {
+        return;
+    } else {
+        while (highscoresListEl.firstChild) {
+            highscoresListEl.removeChild(highscoresListEl.firstChild);
+        }
+    }
+})

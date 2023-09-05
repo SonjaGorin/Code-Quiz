@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code-Quiz</title>
     <!-- <link rel="stylesheet" href="./assets/css/reset.css"> -->
-    <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <h1>View Highscores</h1>
         <h2>Time: <span id="seconds">75</span></h2>
     </header>
@@ -34,7 +34,13 @@
                 <input type="text" name="initials" id="input-initials" placeholder="Enter initials here" />
                 <button id="submit">Submit</button>
             </form>
+        </section>
+
+        <section class="highscores-container">
+            <h3>Highscores</h3>
             <ul id="highscores-list"></ul>
+            <button id="go-back">Go Back</button>
+            <button id="clear-highscores">Clear Highscores</button>
         </section>
     </main>
 

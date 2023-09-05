@@ -161,5 +161,6 @@ highscoresContainerEl.addEventListener("click", function(event) {
         while (highscoresListEl.firstChild) {
             highscoresListEl.removeChild(highscoresListEl.firstChild);
         }
+        localStorage.clear()
     }
 })

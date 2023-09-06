@@ -13,10 +13,10 @@ To use Code Quiz you can click on the link below.
 
 Page preview:
 
-![Code-Quiz-Screenshot](images/code-quiz-screenshot1.png)
-![Code-Quiz-Screenshot](images/code-quiz-screenshot2.png)
-![Code-Quiz-Screenshot](images/code-quiz-screenshot3.png)
-![Code-Quiz-Screenshot](images/code-quiz-screenshot4.png)
+![Code-Quiz-Screenshot](assets/images/code-quiz-screenshot1.png)
+![Code-Quiz-Screenshot](assets/images/code-quiz-screenshot2.png)
+![Code-Quiz-Screenshot](assets/images/code-quiz-screenshot3.png)
+![Code-Quiz-Screenshot](assets/images/code-quiz-screenshot4.png)
 
 ## Credits
 N/A

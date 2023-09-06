@@ -1,5 +1,5 @@
 var headerEl = document.querySelector(".header");
-var viewHighscores = document.querySelector("h1");
+var viewHighscoresBttn = document.querySelector("#view-highscores");
 var secondsEl = document.querySelector("#seconds");
 var questionContainer = document.querySelector(".question-container");
 var question = document.querySelector("#question");
@@ -162,4 +162,12 @@ highscoresContainerEl.addEventListener("click", function(event) {
         }
         localStorage.clear();
     }
+})
+
+viewHighscoresBttn.addEventListener("click", function(event) {
+    event.preventDefault();
+    headerEl.style.display = "none";
+    formContainerEl.style.display = "none";
+    questionContainer.style.display = "none";
+    highscoresContainerEl.style.display = "block";
 })

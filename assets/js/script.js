@@ -1,55 +1,55 @@
-var headerEl = document.querySelector(".header")
-var viewHighscores = document.querySelector("h1")
-var secondsEl = document.querySelector("#seconds")
-var questionContainer = document.querySelector(".question-container")
-var question = document.querySelector("#question")
-var answer1 = document.querySelector("#answer1")
-var answer2 = document.querySelector("#answer2")
-var answer3 = document.querySelector("#answer3")
-var answer4 = document.querySelector("#answer4")
-var correctAnswer = document.querySelector("#correctAnswer")
-var messageEl = document.querySelector("#message")
-var finalScoreEl = document.querySelector("#score")
-var highscoresListEl = document.querySelector("#highscores-list")
-var highscoresFormEl = document.querySelector("#highscores-form")
-var inputInitialsEl = document.querySelector("#input-initials")
-var formContainerEl = document.querySelector(".form-container")
-var highscoresContainerEl = document.querySelector(".highscores-container")
-var clearHighscoresBttn = document.querySelector("#clear-highscores")
+var headerEl = document.querySelector(".header");
+var viewHighscores = document.querySelector("h1");
+var secondsEl = document.querySelector("#seconds");
+var questionContainer = document.querySelector(".question-container");
+var question = document.querySelector("#question");
+var answer1 = document.querySelector("#answer1");
+var answer2 = document.querySelector("#answer2");
+var answer3 = document.querySelector("#answer3");
+var answer4 = document.querySelector("#answer4");
+var correctAnswer = document.querySelector("#correctAnswer");
+var messageEl = document.querySelector("#message");
+var finalScoreEl = document.querySelector("#score");
+var highscoresListEl = document.querySelector("#highscores-list");
+var highscoresFormEl = document.querySelector("#highscores-form");
+var inputInitialsEl = document.querySelector("#input-initials");
+var formContainerEl = document.querySelector(".form-container");
+var highscoresContainerEl = document.querySelector(".highscores-container");
+var clearHighscoresBttn = document.querySelector("#clear-highscores");
 
 
 var questionsWithAnswers = [
     {
-        question: "1. Question1",
-        answer1: "1. Answer1!",
-        answer2: "2. Answer2",
-        answer3: "3. Answer3",
-        answer4: "4. Answer4",
-        correctAnswer: "1. Answer1!",
+        question: "1. Commonly used data types DO NOT include:",
+        answer1: "1. Alerts",
+        answer2: "2. Strings",
+        answer3: "3. Numbers",
+        answer4: "4. Booleans",
+        correctAnswer: "1. Alerts",
     },
     {
-        question: "2. Question2",
-        answer1: "1. Answer12",
-        answer2: "2. Answer22",
-        answer3: "3. Answer32!",
-        answer4: "4. Answer42",
-        correctAnswer: "3. Answer32!",
+        question: "2. The condition in an if / else statement is enclosed within ______.",
+        answer1: "1.Quotes",
+        answer2: "2. Curly brackets",
+        answer3: "3. Parentheses",
+        answer4: "4. Square brackets",
+        correctAnswer: "3. Parentheses",
     },
     {
-        question: "3. Question3",
-        answer1: "1. Answer13",
-        answer2: "2. Answer23!",
-        answer3: "3. Answer33",
-        answer4: "4. Answer43",
-        correctAnswer: "2. Answer23!",
+        question: "3. String values must be enclosed within ______ when being assigned to variables.",
+        answer1: "1. Commas",
+        answer2: "2. Quotes",
+        answer3: "3. Curly brackets",
+        answer4: "4. Parentheses",
+        correctAnswer: "2. Quotes",
     },
     {
-        question: "4. Question4",
-        answer1: "1. Answer14",
-        answer2: "2. Answer24",
-        answer3: "3. Answer34",
-        answer4: "4. Answer44!",
-        correctAnswer: "4. Answer44!",
+        question: "4. Arrays in JavaScript can be used to store ______.",
+        answer1: "1. Numbers and strings",
+        answer2: "2. Other arrays",
+        answer3: "3. Booleans",
+        answer4: "4. All of the above",
+        correctAnswer: "4. All of the above",
     }
 ]
 

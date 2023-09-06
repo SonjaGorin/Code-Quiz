@@ -3,7 +3,7 @@
 ## Description
 Code Quiz application. User has the opportunity to answer to four questions and save their score.
 
-## Instalation
+## Installation
 N/A
 
 ## Usage

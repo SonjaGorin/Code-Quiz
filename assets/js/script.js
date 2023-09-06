@@ -63,8 +63,8 @@ function timer() {
       finalScoreEl.textContent = secondsLeft;
         if(secondsLeft === 0 || i === questionsWithAnswers.length) {
             clearInterval(timerInterval);
-            questionContainer.innerHTML = ""
-            formContainerEl.style.display = "block"
+            questionContainer.innerHTML = "";
+            formContainerEl.style.display = "block";
         }
     }, 1000);
   }
@@ -77,8 +77,8 @@ function render() {
     answer2.textContent = questionsWithAnswers[i].answer2;
     answer3.textContent = questionsWithAnswers[i].answer3;
     answer4.textContent = questionsWithAnswers[i].answer4;
-    correctAnswer.textContent = questionsWithAnswers[i].correctAnswer
-    messageEl.textContent = ""
+    correctAnswer.textContent = questionsWithAnswers[i].correctAnswer;
+    messageEl.textContent = "";
 }
 
 render()
@@ -97,7 +97,6 @@ questionContainer.addEventListener("click", function(event) {
     setTimeout(() => {
         render();
     }, 1000);
-    
 })
 
 var highscoresList = []
@@ -109,7 +108,7 @@ function renderHighscores() {
       var highscore = highscoresList[i];
 
       var li = document.createElement("li");
-      li.textContent = highscore.initials + " - " + highscore.score;
+      li.textContent = highscore.initials + " : " + highscore.score;
       li.setAttribute("data-index", i);
 
       highscoresListEl.appendChild(li);
@@ -145,9 +144,9 @@ highscoresFormEl.addEventListener("click", function(event) {
         storeHighscores();
         renderHighscores();
     }    
-    headerEl.style.display = "none"
-    formContainerEl.style.display = "none"
-    highscoresContainerEl.style.display = "block"
+    headerEl.style.display = "none";
+    formContainerEl.style.display = "none";
+    highscoresContainerEl.style.display = "block";
 });
 
 init()
@@ -161,6 +160,6 @@ highscoresContainerEl.addEventListener("click", function(event) {
         while (highscoresListEl.firstChild) {
             highscoresListEl.removeChild(highscoresListEl.firstChild);
         }
-        localStorage.clear()
+        localStorage.clear();
     }
 })
